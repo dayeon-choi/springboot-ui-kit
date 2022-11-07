@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<!-- Calendar Page Content -->
+<th:block layout:fragment="content">
+    <div id="main" class="d-flex row justify-content-center align-items-center" style="height: 100vh; width: 100vw;">
+        <div style="height: 60vh; width: 60vw;">
+            <button type="button" th:onclick="location.href='/calendar'" class="btn btn-light"><strong>Go to Calendar</strong></button>
+        </div>
+    </div>
+</th:block>
+</html>
