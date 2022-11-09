@@ -1,3 +1,26 @@
+/* 날짜 선택 인풋 */
+#date-range-picker-container {
+    height: 60px;
+    width: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 16px;
+    line-height: 24px;
+    color: #0C0C0C;
+
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    cursor: default;
+}
+#date-range-picker,
+#date-range-picker:focus {
+    border: none;
+    outline: none;
+    cursor: default;
+}
+
 /* 날짜 선택 컨테이너 */
 .daterangepicker {
     width: 400px;
@@ -22,6 +45,9 @@
 }
 
 /* 캘린더 컨테이너 */
+.daterangepicker .drp-calendar.left .calendar-table {
+    border-radius: 16px;
+}
 .daterangepicker .drp-calendar {
     max-width: 100%;
     width: 400px;
@@ -33,6 +59,14 @@
 }
 .daterangepicker .calendar-table table {
     height: 455px;
+}
+
+/* 월 이동 버튼 */
+th.prev.available:hover {
+    border-radius: 16px 0px 0px 0px;
+}
+th.next.available:hover {
+    border-radius: 0px 16px 0px 0px;
 }
 
 /* 년도 월 row */
