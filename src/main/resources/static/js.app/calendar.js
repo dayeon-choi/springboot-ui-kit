@@ -13,6 +13,9 @@ var calendar = {
             .on('click', function() {
                 $('.daterangepicker').show();
             });
+        $('#date-range-picker-container').on('click', function() {
+            $('#date-range-picker').trigger('click');
+        });
 
         // 기본 옵션 사용
         let picker = $('#date-range-picker').daterangepicker({
