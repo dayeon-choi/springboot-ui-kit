@@ -3,8 +3,6 @@
     width: 400px;
     height: 540px;
 
-    justify-content: center;
-
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     border: none;
     border-radius: 16px;
@@ -15,16 +13,26 @@
     display: none;
 }
 
+.daterangepicker .drp-calendar.left {
+    height: 540px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 /* 캘린더 컨테이너 */
 .daterangepicker .drp-calendar {
     max-width: 100%;
     width: 400px;
-    height: 540px;
-
     padding: 0px !important;
 }
 .calendar-table {
+    width: 100%;
     padding-right: 0px !important;
+}
+.daterangepicker .calendar-table table {
+    height: 455px;
 }
 
 /* 년도 월 row */
@@ -33,7 +41,7 @@
 }
 /* 요일 row */
 .table-condensed > thead > tr:nth-child(2) {
-    height: 56px;
+    height: 43px;
 }
 /* 날짜 row */
 .table-condensed > tbody > tr {
@@ -60,6 +68,13 @@
     font-size: 16px !important;
     line-height: 24px;
 }
+.daterangepicker td.off,
+.daterangepicker td.off.in-range,
+.daterangepicker td.off.start-date,
+.daterangepicker td.off.end-date {
+    visibility: hidden;
+    pointer-events: none;
+}
 
 /* 일요일인 col */
 .table-condensed > tbody > tr > td:nth-child(1):not(.off) {
@@ -84,6 +99,34 @@
 .daterangepicker td.active:hover,
 .daterangepicker td.in-range,
 .daterangepicker td.in-range:hover {
+    background-color: #004FC5;
+    color: #FFFFFF;
+}
+
+/* 선택 버튼 */
+.daterangepicker.show-calendar .drp-buttons {
+    display: none;
+}
+.apply-button {
+    height: 60px;
+    width: 360px;
+    margin-bottom: 25px;
+
+    border: 1px solid #004FC5;
+    border-radius: 4px;
+
+    background-color: #FFFFFF;
+    color: #004FC5;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+}
+.apply-button:disabled {
+    border-color: #D8D8D8;
+    background-color: #FFFFFF !important;
+    color: #D8D8D8 !important;
+}
+.apply-button:hover {
     background-color: #004FC5;
     color: #FFFFFF;
 }
