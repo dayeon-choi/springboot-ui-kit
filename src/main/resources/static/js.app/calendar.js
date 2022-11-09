@@ -9,12 +9,11 @@ var calendar = {
     makeUpDatepicker: function() {
         // 초기화
         $('#date-range-picker')
-            .val(calendar.getDateNow() + " ~ " + calendar.getDateNow())
-            .on('click', function() {
-                $('.daterangepicker').show();
-            });
+            .val(calendar.getDateNow() + " ~ " + calendar.getDateNow());
         $('#date-range-picker-container').on('click', function() {
-            $('#date-range-picker').trigger('click');
+            if($('.daterangepicker').css('display') == 'none'){
+                $('#date-range-picker').trigger('click');
+            }
         });
 
         // 기본 옵션 사용
@@ -45,7 +44,14 @@ var calendar = {
             if (el.hasClass('next available')) { return; }
             el.addClass('next available');
             el.append('<span></span>');
+            // 캘린더 월 년도 표시 순서 변경
+            calendar.getCurrentMonthYearText();
         });
+
+        // 캘린더 월 년도 표시 순서 변경
+//        $('.month').on('DOMSubtreeModified', function() {
+//            calendar.getCurrentMonthYearText();
+//        });
 
         // 선택 완료 버튼
         $('.drp-calendar.left').append('<button type="button" id="apply-button" class="apply-button applyBtn"></button>');
@@ -64,21 +70,21 @@ var calendar = {
     },
 
     setPickedTotal: function() {
-        const startToEndArray = $('#date-range-picker').val().split(" ");
-        const diffText = calendar.getDateDiffText(startToEndArray[0], startToEndArray[2]);
+        const startToEndList = $('#date-range-picker').val().split(" ");
+        const diffText = calendar.getDateDiffText(startToEndList[0], startToEndList[2]);
         $('#picked-total').html("").append(diffText);
     },
 
     setApplyButtonText: function() {
-        const startToEndArray = $('.drp-selected').text().split(" ");
-        const diffText = calendar.getDateDiffText(startToEndArray[0], startToEndArray[2]);
+        const startToEndList = $('.drp-selected').text().split(" ");
+        const diffText = calendar.getDateDiffText(startToEndList[0], startToEndList[2]);
         $('#apply-button').html("").append(diffText+" 선택 완료");
         return diffText;
     },
 
     getDatePickerDiffText: function() {
-        const startToEndArray = $('#date-range-picker').val().split(" ");
-        const diffText = calendar.getDateDiffText(startToEndArray[0], startToEndArray[2]);
+        const startToEndList = $('#date-range-picker').val().split(" ");
+        const diffText = calendar.getDateDiffText(startToEndList[0], startToEndList[2]);
         return diffText;
     },
 
@@ -97,6 +103,13 @@ var calendar = {
         const date = new Date();
         const dateText = date.getFullYear() + "." + (date.getMonth()+1) + "." + ('00'+date.getDate()).slice(-2);
         return dateText;
+    },
+
+    setCurrentMonthYearText: function() {
+        $('.month').html("");
+        const monthYearList = $('.month').text().split(" ");
+        console.log($('.month'));
+        $('.month').text(monthYearList[1]+" "+monthYearList[0]);
     },
 };
 
